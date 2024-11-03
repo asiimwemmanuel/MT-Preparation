@@ -23,5 +23,5 @@ with open(target_pred) as pred, open(target_decodeded, "w+") as pred_decoded:
         line = line.strip().split(" ")
         line = sp.decode_pieces(line)
         pred_decoded.write(line + "\n")
-        
+
 print("Done desubwording! Output:", target_decodeded)

@@ -11,7 +11,7 @@ import sentencepiece as spm
 
 train_source_file_tok = sys.argv[1]
 train_target_file_tok = sys.argv[2]
-    
+
 
 # train sentencepiece model from the source and target files
 # and create `source/target.model` and `source/target.vocab`
@@ -23,13 +23,21 @@ train_target_file_tok = sys.argv[2]
 
 # Source subword model
 
-source_train_value = '--input='+train_source_file_tok+' --model_prefix=source --vocab_size=50000 --hard_vocab_limit=false --model_type=bpe --split_digits=true'
+source_train_value = (
+    "--input="
+    + train_source_file_tok
+    + " --model_prefix=source --vocab_size=50000 --hard_vocab_limit=false --model_type=bpe --split_digits=true"
+)
 spm.SentencePieceTrainer.train(source_train_value)
 print("Done, training a SentencepPiece model for the Source finished successfully!")
 
 
 # Target subword model
 
-target_train_value = '--input='+train_target_file_tok+' --model_prefix=target --vocab_size=50000 --hard_vocab_limit=false --model_type=bpe --split_digits=true'
+target_train_value = (
+    "--input="
+    + train_target_file_tok
+    + " --model_prefix=target --vocab_size=50000 --hard_vocab_limit=false --model_type=bpe --split_digits=true"
+)
 spm.SentencePieceTrainer.train(target_train_value)
 print("Done, training a SentencepPiece model for the Target finished successfully!")
